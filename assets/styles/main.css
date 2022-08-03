@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans");
+
+/* navbar */
+.nav-blue {
+  background-image: linear-gradient(to bottom, #1e3b70 -60%, #0088ee 40% 60%, #1e3b70 160%);
+  font-family: 'Open Sans';
+}
+
+.nav-item {
+  font-size: large;
+}
+
+.nav-item:hover {
+  text-shadow: 1px 1px 2px #3366ff, 1px 1px 4px white;
+}
+
+.brand-text {
+  font-family: 'Open Sans';
+  font-size: xx-large;
+  text-shadow: 1px 1px 2px #3366ff, 1px 1px 8px white;
+}
+
+.nav-hover {
+  display: inline-block;
+  position: relative;
+}
+
+.nav-hover:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0.25em;
+  left: 0;
+  background-color: rgb(255, 255, 255, 80%);
+  transform-origin: center;
+  transition: transform 0.25s ease-out;
+}
+
+.nav-hover:hover:after {
+  transform: scaleX(1);
+  transform-origin: center;
+}
+
+/* basic layout */
+main {
+  padding: 10px;
+  overflow-x: hidden;
+}
+
+.bcr-name {
+  font-family: 'PT Sans';
+  text-align: center;
+}
+
+.cr-name {
+  font-size: 2em;
+}
