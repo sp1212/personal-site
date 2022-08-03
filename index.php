@@ -5,10 +5,8 @@ spl_autoload_register(function($classname) {
     include "$classname.php";
 });
 
-// Parse the query string for command
-$command = "login";
-if (isset($_GET["command"]))
-    $command = $_GET["command"];
+// Parse the url for the command
+$command = $_SERVER['REQUEST_URI'];
 
 // Instantiate the controller and run
 $controller = new SiteController($command);

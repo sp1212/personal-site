@@ -138,3 +138,4 @@ dmypy.json
 # personal ignores
 Config.php
 notes.txt
+.htaccess

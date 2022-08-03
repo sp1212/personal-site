@@ -10,15 +10,15 @@ var passwordconfField = document.getElementById("passwordconf");
 
 function toggleVisibility() {
     if (hidden) {
-        passwordVisibility.src = "./assets/images/eye.svg";
+        passwordVisibility.src = "/assets/images/eye.svg";
         passwordField.type = "text";
-        passwordconfVisibility.src = "./assets/images/eye.svg";
+        passwordconfVisibility.src = "/assets/images/eye.svg";
         passwordconfField.type = "text";
         hidden = false;
     } else {
-        passwordVisibility.src = "./assets/images/eye-slash.svg";
+        passwordVisibility.src = "/assets/images/eye-slash.svg";
         passwordField.type = "password";
-        passwordconfVisibility.src = "./assets/images/eye-slash.svg";
+        passwordconfVisibility.src = "/assets/images/eye-slash.svg";
         passwordconfField.type = "password";
         hidden = true;
     }

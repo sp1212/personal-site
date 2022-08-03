@@ -17,45 +17,43 @@ class SiteController {
         }
 
         // allow user to go to createaccount page if not logged in
-        if (!isset($_SESSION["email"]) && $this->command == "createaccount")
+        if (!isset($_SESSION["email"]) && $this->command == "/createaccount")
         {
-            $this->command == "createaccount"; // repetitive but just continue
+            $this->command == "/createaccount"; // repetitive but just continue
         }
         // disallow a logged-in user from accessing the createaccount page
-        else if (isset($_SESSION["email"]) && $this->command == "createaccount")
+        else if (isset($_SESSION["email"]) && $this->command == "/createaccount")
         {
-            $this->command = "home";
-            header("Location: ?command=home");
+            $this->command = "/home";
+            header("Location: /home");
         }
         // disallow a logged-in user from accessing the login page
-        else if (isset($_SESSION["email"]) && $this->command == "login")
+        else if (isset($_SESSION["email"]) && $this->command == "/login")
         {
-            $this->command = "home";
-            header("Location: ?command=home");
+            $this->command = "/home";
+            header("Location: /home");
         }
         // if not logged in and trying to access a core site page (thus not caught by statements above), redirect to login
-        else if (!isset($_SESSION["email"]) && $this->command != "login")
+        else if (!isset($_SESSION["email"]) && $this->command != "/login")
         {
-            $this->command = "login";
-            header("Location: ?command=login");
+            $this->command = "/login";
+            header("Location: /login");
         }
 
         // run a specific function below based on the given command
-        // command is often seen appended to the url ex."?command=search"
-        // href="?command=search" can be used to run a certain command through html links
         switch($this->command) {
-            case "home":
+            case "/home":
                 $this->home();
                 break;
-            case "profile":
+            case "/profile":
                 $this->profile();
                 break;
-            case "createaccount":
+            case "/createaccount":
                 $this->createaccount();
                 break;
-            case "logout":
+            case "/logout":
                 $this->logout();
-            case "login":
+            case "/login":
             default:
                 $this->login();
                 break;
@@ -91,7 +89,7 @@ class SiteController {
                     // redirect to home
                     // this type of redirect not always necessary, but it is here
                     // because the session variable would otherwise not be updated until the next refresh
-                    header("Location: ?command=home");
+                    header("Location: /home");
                 } else {
                     // found a user in the db with that email but had the wrong password
                     $error_msg = "Invalid password.";
@@ -137,7 +135,7 @@ class SiteController {
                     $_SESSION["firstName"] = $_POST["firstName"];
                     $_SESSION["lastName"] = $_POST["lastName"];
                     $_SESSION["email"] = $_POST["email"];
-                    header("Location: ?command=home");
+                    header("Location: /home");
                 }
             }
         }
@@ -154,7 +152,7 @@ class SiteController {
 
     public function logout() {
         session_destroy();
-        header("Location: ?command=home");
+        header("Location: /home");
     }
 
 }

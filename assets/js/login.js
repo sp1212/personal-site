@@ -6,11 +6,11 @@ var passwordField = document.getElementById("password");
 
 passwordVisibility.onclick = function() {
     if (hidden) {
-        passwordVisibility.src = "./assets/images/eye.svg";
+        passwordVisibility.src = "/assets/images/eye.svg";
         passwordField.type = "text";
         hidden = false;
     } else {
-        passwordVisibility.src = "./assets/images/eye-slash.svg";
+        passwordVisibility.src = "/assets/images/eye-slash.svg";
         passwordField.type = "password";
         hidden = true;
     }
