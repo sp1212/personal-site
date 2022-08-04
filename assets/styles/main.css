@@ -48,11 +48,12 @@ main {
   overflow-x: hidden;
 }
 
-.bcr-name {
+.content {
   font-family: 'PT Sans';
   text-align: center;
 }
 
-.cr-name {
-  font-size: 2em;
+.headings {
+  font-family: 'Open Sans';
+  text-align: center;
 }

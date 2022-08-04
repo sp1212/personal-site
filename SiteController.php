@@ -1,52 +1,48 @@
 <?php
-class SiteController {
+class SiteController
+{
     private $command;
 
     private $db;
 
-    public function __construct($command) {
+    public function __construct($command)
+    {
         $this->command = $command;
         $this->db = new Database();
     }
 
-    public function run() {
+    public function run()
+    {
         // start a user session if one doesn't exist
-        if (session_status() == PHP_SESSION_NONE)
-        {
+        if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
 
         // allow user to go to createaccount page if not logged in
-        if (!isset($_SESSION["email"]) && $this->command == "/createaccount")
-        {
+        if (!isset($_SESSION["email"]) && $this->command == "/createaccount") {
             $this->command == "/createaccount"; // repetitive but just continue
         }
         // disallow a logged-in user from accessing the createaccount page
-        else if (isset($_SESSION["email"]) && $this->command == "/createaccount")
-        {
+        else if (isset($_SESSION["email"]) && $this->command == "/createaccount") {
             $this->command = "/home";
             header("Location: /home");
         }
         // disallow a logged-in user from accessing the login page
-        else if (isset($_SESSION["email"]) && $this->command == "/login")
-        {
+        else if (isset($_SESSION["email"]) && $this->command == "/login") {
             $this->command = "/home";
             header("Location: /home");
         }
         // if not logged in and trying to access a core site page (thus not caught by statements above), redirect to login
-        else if (!isset($_SESSION["email"]) && $this->command != "/login")
-        {
+        else if (!isset($_SESSION["email"]) && $this->command != "/login") {
             $this->command = "/login";
             header("Location: /login");
-        }
-        else if ($this->command == "/")
-        {
+        } else if ($this->command == "/") {
             $this->command = "/home";
             header("Location: /home");
         }
 
         // run a specific function below based on the given command
-        switch($this->command) {
+        switch ($this->command) {
             case "/home":
                 $this->home();
                 break;
@@ -58,23 +54,27 @@ class SiteController {
                 break;
             case "/logout":
                 $this->logout();
+                break;
             case "/login":
-            default:
                 $this->login();
+                break;
+            default:
+                $this->pagenotfound();
                 break;
         }
     }
-    
+
 
     // Display the login page (and handle login logic)
-    public function login() {
+    public function login()
+    {
         $error_msg = "";
 
         // if an email was entered
         if (isset($_POST["email"])) {
             // look for a db entry with the given email
             $data = $this->db->query("select * from users where email = ?;", "s", $_POST["email"]);
-            $nameData= [];
+            $nameData = [];
             if (!empty($data)) {
                 $nameData = $this->db->query("select * from realnames where userId = ?;", "s", $data[0]["userId"]);
             }
@@ -99,39 +99,44 @@ class SiteController {
                     // found a user in the db with that email but had the wrong password
                     $error_msg = "Invalid password.";
                 }
-            }
-            else { // empty, no user found
-                    $error_msg = "Account not found.";
+            } else { // empty, no user found
+                $error_msg = "Account not found.";
             }
         }
 
-        include ("login.php");
+        include("login.php");
     }
 
     // similar to login functionality, but for creating a new account
-    public function createaccount() {
+    public function createaccount()
+    {
         $error_msg = "";
 
         if (isset($_POST["email"])) {
             $data = $this->db->query("select * from users where email = ?;", "s", $_POST["email"]);
             if ($data === false) {
                 $error_msg = "Error checking for user.";
-            }
-            else if (!empty($data)) {
+            } else if (!empty($data)) {
                 $error_msg = "Account with that email address already exists.";
-            }
-            else if ($_POST["password"] != $_POST["passwordconf"]) {
+            } else if ($_POST["password"] != $_POST["passwordconf"]) {
                 $error_msg = "Password confirmation didn't match.";
-            }
-            else { // empty, no user found
-                $insert = $this->db->query("insert into users (email, password) values (?, ?);", 
-                        "ss", $_POST["email"], 
-                        password_hash($_POST["password"], PASSWORD_DEFAULT));
+            } else { // empty, no user found
+                $insert = $this->db->query(
+                    "insert into users (email, password) values (?, ?);",
+                    "ss",
+                    $_POST["email"],
+                    password_hash($_POST["password"], PASSWORD_DEFAULT)
+                );
                 // get the user id
                 $userIdData = $this->db->query("select userId from users where email = ?;", "s", $_POST["email"]);
                 $userId = $userIdData[0]["userId"];
-                $insert2 = $this->db->query("insert into realnames (userId, firstName, lastName) values (?, ?, ?);", 
-                        "dss", $userId, $_POST["firstName"], $_POST["lastName"]);
+                $insert2 = $this->db->query(
+                    "insert into realnames (userId, firstName, lastName) values (?, ?, ?);",
+                    "dss",
+                    $userId,
+                    $_POST["firstName"],
+                    $_POST["lastName"]
+                );
                 if ($insert === false || $insert2 === false || $userIdData === false) {
                     $error_msg = "Error inserting user";
                 } else {
@@ -144,20 +149,28 @@ class SiteController {
                 }
             }
         }
-        include ("createaccount.php");
+        include("createaccount.php");
     }
 
-    public function home() {
+    public function home()
+    {
         include("home.php");
     }
 
-    public function profile() {
-        include ("profile.php");
+    public function profile()
+    {
+        include("profile.php");
     }
 
-    public function logout() {
+    public function logout()
+    {
         session_destroy();
         header("Location: /home");
     }
 
+    public function pagenotfound()
+    {
+        http_response_code(404);
+        include("pagenotfound.php");
+    }
 }

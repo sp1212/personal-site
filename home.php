@@ -21,10 +21,8 @@
     </header>
 
     <main>
-        <div class="row bcr-name">
-            <?php
-                echo "<h2>Welcome, " . $_SESSION["firstName"]."</h2>"
-            ?>
+        <div class="row headings">
+            <h1 class="display-2">The Paine Domain</h1>
         </div>
     </main>
 

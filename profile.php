@@ -21,7 +21,7 @@
     </header>
 
     <main>
-        <div class="row bcr-name">
+        <div class="row content">
             <h2>User Profile</h2>
         </div>
         <div class="row">
@@ -29,7 +29,7 @@
 
             </div>
             <div class="col">
-                <div class="row bcr-name">
+                <div class="row content">
                     <h4><?=$_SESSION['firstName']?> <?=$_SESSION['lastName']?></h4>
                     <h4><?=$_SESSION['email']?></h4>
                 </div>

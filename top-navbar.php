@@ -19,7 +19,7 @@
                     <a class="nav-link nav-hover active" aria-current="page" href="/home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-hover active" aria-current="page" href="/home">Explore</a>
+                    <a class="nav-link nav-hover active" aria-current="page" href="/wordle">Wordle</a>
                 </li>
             </ul>
 

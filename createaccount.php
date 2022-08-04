@@ -18,11 +18,11 @@
 
     <main>
         <div class="container" style="margin-top: 15px;">
-            <div class="row col-xs-8 bcr-name">
+            <div class="row col-xs-8 content">
                 <h1>Account Creation</h1>
                 <p>Please create a new account below.</p>
             </div>
-            <div class="row justify-content-center bcr-name">
+            <div class="row justify-content-center content">
                 <div class="col-xl-4 col-lg-6 col-md-8">
                     <form action="/createaccount" method="post">
                         <div class="form-floating mb-3">
@@ -63,7 +63,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="row justify-content-center bcr-name" style="margin-top: 80px;">
+                <div class="row justify-content-center content" style="margin-top: 80px;">
                     <div class="col-4">
                         <p>Existing user?</p>
                         <a class="btn btn-secondary" href="/login" role="button">Login</a>
