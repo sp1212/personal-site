@@ -39,6 +39,11 @@ class SiteController {
             $this->command = "/login";
             header("Location: /login");
         }
+        else if ($this->command == "/")
+        {
+            $this->command = "/home";
+            header("Location: /home");
+        }
 
         // run a specific function below based on the given command
         switch($this->command) {

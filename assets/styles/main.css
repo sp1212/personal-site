@@ -15,15 +15,13 @@
   text-shadow: 1px 1px 2px #3366ff, 1px 1px 4px white;
 }
 
-.brand-text {
-  font-family: 'Open Sans';
-  font-size: xx-large;
-  text-shadow: 1px 1px 2px #3366ff, 1px 1px 8px white;
-}
-
 .nav-hover {
   display: inline-block;
   position: relative;
+}
+
+.navbar-brand img {
+  height: 2.4em;
 }
 
 .nav-hover:after {

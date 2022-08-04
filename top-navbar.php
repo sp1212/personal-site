@@ -2,7 +2,9 @@
 <nav class="navbar navbar-expand-lg navbar-light nav-blue">
     <div class="container-fluid">
         <!--Site name / logo spot-->
-        <a class="navbar-brand brand-text" href="/home">TBD</a>
+        <a class="navbar-brand brand-text" href="/home">
+            <img src="/assets/images/tpd-logo.webp"/>
+        </a>
 
         <!--Expand button used for smaller screens-->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
