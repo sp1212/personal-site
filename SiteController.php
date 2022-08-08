@@ -49,6 +49,9 @@ class SiteController
             case "/profile":
                 $this->profile();
                 break;
+            case "/wordle":
+                $this->wordle();
+                break;
             case "/createaccount":
                 $this->createaccount();
                 break;
@@ -150,6 +153,17 @@ class SiteController
             }
         }
         include("createaccount.php");
+    }
+
+    public function wordle()
+    {
+        // input validation
+        // store as convenient variables
+
+        // populate the progress within template file using php within the html
+
+        // filter words from DB
+        include("wordle.php");
     }
 
     public function home()

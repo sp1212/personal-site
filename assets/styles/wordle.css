@@ -1,0 +1,31 @@
+.tile {
+    border-width: 2px;
+    border-color: #3a3a3c;
+    border-style: solid;
+    background-color: #121213;
+    color: white;
+    line-height: 62px;
+    vertical-align: middle;
+    height: 62px;
+    width: 62px;
+    margin: 2px;
+    font-size: xx-large;
+    font-weight: bolder;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.gray {
+    background-color: gray !important;
+}
+
+.green {
+    background-color: #538d4e !important;
+}
+
+.yellow {
+    background-color: #b59f3b !important;
+}
