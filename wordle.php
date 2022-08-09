@@ -1,3 +1,17 @@
+<?php
+    function echoColorClass($numeral, $colors) {
+        if (strcmp($colors[$numeral], "0") == 0) {
+            echo "gray";
+        }
+        else if (strcmp($colors[$numeral], "1") == 0) {
+            echo "yellow";
+        }
+        else if (strcmp($colors[$numeral], "2") == 0) {
+            echo "green";
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,109 +40,114 @@
         <div class="row justify-content-center content">
             <div class="col-xl-4 col-lg-6 col-md-8">
                 <div class="row justify-content-center" id="row0">
-                    <div class="col-2 tile" id="tile0">
-
+                    <div class="col-2 tile <?php echoColorClass(0, $flattilecolors) ?>" id="tile0">
+                        <?php if ($guess0) echo strtoupper($guess0[0]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile1">
-
+                    <div class="col-2 tile <?php echoColorClass(1, $flattilecolors) ?>" id="tile1">
+                        <?php if ($guess0) echo strtoupper($guess0[1]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile2">
-
+                    <div class="col-2 tile <?php echoColorClass(2, $flattilecolors) ?>" id="tile2">
+                        <?php if ($guess0) echo strtoupper($guess0[2]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile3">
-
+                    <div class="col-2 tile <?php echoColorClass(3, $flattilecolors) ?>" id="tile3">
+                        <?php if ($guess0) echo strtoupper($guess0[3]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile4">
-
+                    <div class="col-2 tile <?php echoColorClass(4, $flattilecolors) ?>" id="tile4">
+                        <?php if ($guess0) echo strtoupper($guess0[4]); ?>
                     </div>
                 </div>
+                <?php if ($numGuesses == 1) echo '<hr/>'; ?>
                 <div class="row justify-content-center" id="row1">
-                    <div class="col-2 tile" id="tile5">
-
+                    <div class="col-2 tile <?php echoColorClass(5, $flattilecolors) ?>" id="tile5">
+                        <?php if ($guess1) echo strtoupper($guess1[0]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile6">
-
+                    <div class="col-2 tile <?php echoColorClass(6, $flattilecolors) ?>" id="tile6">
+                        <?php if ($guess1) echo strtoupper($guess1[1]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile7">
-
+                    <div class="col-2 tile <?php echoColorClass(7, $flattilecolors) ?>" id="tile7">
+                        <?php if ($guess1) echo strtoupper($guess1[2]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile8">
-
+                    <div class="col-2 tile <?php echoColorClass(8, $flattilecolors) ?>" id="tile8">
+                        <?php if ($guess1) echo strtoupper($guess1[3]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile9">
-
+                    <div class="col-2 tile <?php echoColorClass(9, $flattilecolors) ?>" id="tile9">
+                        <?php if ($guess1) echo strtoupper($guess1[4]); ?>
                     </div>
                 </div>
+                <?php if ($numGuesses == 2) echo '<hr/>'; ?>
                 <div class="row justify-content-center" id="row2">
-                    <div class="col-2 tile" id="tile10">
-
+                    <div class="col-2 tile <?php echoColorClass(10, $flattilecolors) ?>" id="tile10">
+                        <?php if ($guess2) echo strtoupper($guess2[0]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile11">
-
+                    <div class="col-2 tile <?php echoColorClass(11, $flattilecolors) ?>" id="tile11">
+                        <?php if ($guess2) echo strtoupper($guess2[1]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile12">
-
+                    <div class="col-2 tile <?php echoColorClass(12, $flattilecolors) ?>" id="tile12">
+                        <?php if ($guess2) echo strtoupper($guess2[2]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile13">
-
+                    <div class="col-2 tile <?php echoColorClass(13, $flattilecolors) ?>" id="tile13">
+                        <?php if ($guess2) echo strtoupper($guess2[3]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile14">
-
+                    <div class="col-2 tile <?php echoColorClass(14, $flattilecolors) ?>" id="tile14">
+                        <?php if ($guess2) echo strtoupper($guess2[4]); ?>
                     </div>
                 </div>
+                <?php if ($numGuesses == 3) echo '<hr/>'; ?>
                 <div class="row justify-content-center" id="row3">
-                    <div class="col-2 tile" id="tile15">
-
+                    <div class="col-2 tile <?php echoColorClass(15, $flattilecolors) ?>" id="tile15">
+                        <?php if ($guess3) echo strtoupper($guess3[0]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile16">
-
+                    <div class="col-2 tile <?php echoColorClass(16, $flattilecolors) ?>" id="tile16">
+                        <?php if ($guess3) echo strtoupper($guess3[1]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile17">
-
+                    <div class="col-2 tile <?php echoColorClass(17, $flattilecolors) ?>" id="tile17">
+                        <?php if ($guess3) echo strtoupper($guess3[2]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile18">
-
+                    <div class="col-2 tile <?php echoColorClass(18, $flattilecolors) ?>" id="tile18">
+                        <?php if ($guess3) echo strtoupper($guess3[3]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile19">
-
+                    <div class="col-2 tile <?php echoColorClass(19, $flattilecolors) ?>" id="tile19">
+                        <?php if ($guess3) echo strtoupper($guess3[4]); ?>
                     </div>
                 </div>
+                <?php if ($numGuesses == 4) echo '<hr/>'; ?>
                 <div class="row justify-content-center" id="row4">
-                    <div class="col-2 tile" id="tile20">
-
+                    <div class="col-2 tile <?php echoColorClass(20, $flattilecolors) ?>" id="tile20">
+                        <?php if ($guess4) echo strtoupper($guess4[0]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile21">
-
+                    <div class="col-2 tile <?php echoColorClass(21, $flattilecolors) ?>" id="tile21">
+                        <?php if ($guess4) echo strtoupper($guess4[1]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile22">
-
+                    <div class="col-2 tile <?php echoColorClass(22, $flattilecolors) ?>" id="tile22">
+                        <?php if ($guess4) echo strtoupper($guess4[2]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile23">
-
+                    <div class="col-2 tile <?php echoColorClass(23, $flattilecolors) ?>" id="tile23">
+                        <?php if ($guess4) echo strtoupper($guess4[3]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile24">
-
+                    <div class="col-2 tile <?php echoColorClass(24, $flattilecolors) ?>" id="tile24">
+                        <?php if ($guess4) echo strtoupper($guess4[4]); ?>
                     </div>
                 </div>
+                <?php if ($numGuesses == 5) echo '<hr/>'; ?>
                 <div class="row justify-content-center" id="row5">
-                    <div class="col-2 tile" id="tile25">
-
+                    <div class="col-2 tile <?php echoColorClass(25, $flattilecolors) ?>" id="tile25">
+                        <?php if ($guess5) echo strtoupper($guess5[0]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile26">
-
+                    <div class="col-2 tile <?php echoColorClass(26, $flattilecolors) ?>" id="tile26">
+                        <?php if ($guess5) echo strtoupper($guess5[1]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile27">
-
+                    <div class="col-2 tile <?php echoColorClass(27, $flattilecolors) ?>" id="tile27">
+                        <?php if ($guess5) echo strtoupper($guess5[2]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile28">
-
+                    <div class="col-2 tile <?php echoColorClass(28, $flattilecolors) ?>" id="tile28">
+                        <?php if ($guess5) echo strtoupper($guess5[3]); ?>
                     </div>
-                    <div class="col-2 tile" id="tile29">
-
+                    <div class="col-2 tile <?php echoColorClass(29, $flattilecolors) ?>" id="tile29">
+                        <?php if ($guess5) echo strtoupper($guess5[4]); ?>
                     </div>
                 </div>
                 <div class="form-floating m-3 content">
-                    <input type="text" class="form-control" id="guess" placeholder="guess" maxlength="5" minlength="5" pattern="[A-Za-z]{5}">
+                    <input type="text" class="form-control" id="guess" placeholder="guess" maxlength="5" minlength="5" pattern="^[A-Za-z]{5}$">
                     <label for="guess">Guess</label>
                 </div>
                 <div class="content">
@@ -136,26 +155,34 @@
                 </div>
                 <div class="form-floating m-3 content">
                     <form action="/wordle" method="post">
-                        <input type="text" id="guess0" name="guess0" hidden />
-                        <input type="text" id="guess1" name="guess1" hidden />
-                        <input type="text" id="guess2" name="guess2" hidden />
-                        <input type="text" id="guess3" name="guess3" hidden />
-                        <input type="text" id="guess4" name="guess4" hidden />
-                        <input type="text" id="guess5" name="guess5" hidden />
-                        <input type="text" id="flattilecolors" name="flattilecolors" value="------------------------------" hidden />
+                        <input type="text" id="guess0" name="guess0" hidden <?php if ($guess0) echo 'value="' . $guess0 . '"'; ?> />
+                        <input type="text" id="guess1" name="guess1" hidden <?php if ($guess1) echo 'value="' . $guess1 . '"'; ?> />
+                        <input type="text" id="guess2" name="guess2" hidden <?php if ($guess2) echo 'value="' . $guess2 . '"'; ?> />
+                        <input type="text" id="guess3" name="guess3" hidden <?php if ($guess3) echo 'value="' . $guess3 . '"'; ?> />
+                        <input type="text" id="guess4" name="guess4" hidden <?php if ($guess4) echo 'value="' . $guess4 . '"'; ?> />
+                        <input type="text" id="guess5" name="guess5" hidden <?php if ($guess5) echo 'value="' . $guess5 . '"'; ?> />
+                        <input type="text" id="flattilecolors" name="flattilecolors" <?php if ($flattilecolors) {
+                                                                                            echo 'value="' . $flattilecolors . '"';
+                                                                                        } else {
+                                                                                            echo 'value="------------------------------"';
+                                                                                        } ?> hidden />
                         <button type="submit" class="btn btn-primary">Calculate</button>
                     </form>
+                </div>
+                <div class="form-floating m-3 content">
+                    <a class="refresh" href="/wordle">Refresh to reset</a>
                 </div>
             </div>
         </div>
         <?php
-            echo $_POST['guess0'];
-            echo $_POST['guess1'];
-            echo $_POST['guess2'];
-            echo $_POST['guess3'];
-            echo $_POST['guess4'];
-            echo $_POST['guess5'];
-            echo $_POST['flattilecolors'];
+        echo $guess0;
+        echo $guess1;
+        echo $guess2;
+        echo $guess3;
+        echo $guess4;
+        echo $guess5;
+        echo $flattilecolors;
+        echo "numGuesses=" . $numGuesses;
         ?>
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

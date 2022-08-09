@@ -29,3 +29,11 @@
 .yellow {
     background-color: #b59f3b !important;
 }
+
+.refresh {
+    text-decoration: none;
+}
+
+.refresh:hover {
+    font-style: italic;
+}

@@ -157,12 +157,59 @@ class SiteController
 
     public function wordle()
     {
-        // input validation
-        // store as convenient variables
-
-        // populate the progress within template file using php within the html
-
-        // filter words from DB
+        $guess0 = false;
+        $guess1 = false;
+        $guess2 = false;
+        $guess3 = false;
+        $guess4 = false;
+        $guess5 = false;
+        $flattilecolors = false;
+        $numGuesses = 0;
+        for ($i = 0; $i < 1; $i++) {
+            if (isset($_POST['guess0']) && strlen($_POST['guess0']) == 5 && preg_match('/^[A-Za-z]{5}$/', $_POST['guess0'])) {
+                $guess0 = strtolower($_POST['guess0']);
+                $numGuesses++;
+            } else {
+                break;
+            }
+            if (isset($_POST['guess1']) && strlen($_POST['guess1']) == 5 && preg_match('/^[A-Za-z]{5}$/', $_POST['guess1'])) {
+                $guess1 = strtolower($_POST['guess1']);
+                $numGuesses++;
+            } else {
+                break;
+            }
+            if (isset($_POST['guess2']) && strlen($_POST['guess2']) == 5 && preg_match('/^[A-Za-z]{5}$/', $_POST['guess2'])) {
+                $guess2 = strtolower($_POST['guess2']);
+                $numGuesses++;
+            } else {
+                break;
+            }
+            if (isset($_POST['guess3']) && strlen($_POST['guess3']) == 5 && preg_match('/^[A-Za-z]{5}$/', $_POST['guess3'])) {
+                $guess3 = strtolower($_POST['guess3']);
+                $numGuesses++;
+            } else {
+                break;
+            }
+            if (isset($_POST['guess4']) && strlen($_POST['guess4']) == 5 && preg_match('/^[A-Za-z]{5}$/', $_POST['guess4'])) {
+                $guess4 = strtolower($_POST['guess4']);
+                $numGuesses++;
+            } else {
+                break;
+            }
+            if (isset($_POST['guess5']) && strlen($_POST['guess5']) == 5 && preg_match('/^[A-Za-z]{5}$/', $_POST['guess5'])) {
+                $guess5 = strtolower($_POST['guess5']);
+                $numGuesses++;
+            } else {
+                break;
+            }
+        }
+        if (isset($_POST['flattilecolors']) && strlen($_POST['flattilecolors']) == 30 && preg_match('/^[012-]{30}$/', $_POST['flattilecolors'])) {
+            $flattilecolors = $_POST['flattilecolors'];
+        }
+        if (!preg_match('/^[012-]{' . $numGuesses * 5 . '}$/', substr($flattilecolors, 0, $numGuesses * 5))) {
+            $flattilecolors = false;
+        }
+        // TODO:  display error message if error -> build regex(es), filter words from DB and display
         include("wordle.php");
     }
 
