@@ -45,7 +45,7 @@
                     </ul>
                 </li>
             </ul>
-
+            <script type="text/javascript" src="/assets/js/navbar.js"></script>
         </div>
     </div>
 </nav>

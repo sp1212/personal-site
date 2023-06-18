@@ -15,6 +15,10 @@
   text-shadow: 1px 1px 2px #3366ff, 1px 1px 4px white;
 }
 
+.current-nav-tab {
+  text-shadow: 1px 1px 2px #3366ff, 1px 1px 4px white;
+}
+
 .nav-hover {
   display: inline-block;
   position: relative;
