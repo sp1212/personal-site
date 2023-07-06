@@ -175,14 +175,23 @@
             </div>
         </div>
         <?php
-        echo $guess0;
-        echo $guess1;
-        echo $guess2;
-        echo $guess3;
-        echo $guess4;
-        echo $guess5;
-        echo $flattilecolors;
-        echo "numGuesses=" . $numGuesses;
+        //echo "0) " . $guess0 . "<br>";
+        //echo "1) " . $guess1 . "<br>";
+        //echo "2) " . $guess2 . "<br>";
+        //echo "3) " . $guess3 . "<br>";
+        //echo "4) " . $guess4 . "<br>";
+        //echo "5) " . $guess5 . "<br>";
+        //echo $flattilecolors . "<br>";
+        //echo $combinedGuesses . "<br>";
+        //echo $deadregexp . "<br>";
+        //echo $correctregexp . "<br>";
+        //echo "Yellow letters: " . $yellowLetters . "<br>";
+        //echo "Dead letters: " . $deadLetters . "<br>";
+        //echo "numGuesses=" . $numGuesses . "<br>";
+        echo "Possible words: " . count($possibleWords) . "<br>";
+        for ($k = 0; $k < count($possibleWords); $k++) {
+            echo $k . " " . $possibleWords[$k] . "<br>";
+        }
         ?>
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

@@ -165,6 +165,7 @@ class SiteController
         $guess5 = false;
         $flattilecolors = false;
         $numGuesses = 0;
+        $possibleWords = [];
         for ($i = 0; $i < 1; $i++) {
             if (isset($_POST['guess0']) && strlen($_POST['guess0']) == 5 && preg_match('/^[A-Za-z]{5}$/', $_POST['guess0'])) {
                 $guess0 = strtolower($_POST['guess0']);
@@ -209,7 +210,90 @@ class SiteController
         if (!preg_match('/^[012-]{' . $numGuesses * 5 . '}$/', substr($flattilecolors, 0, $numGuesses * 5))) {
             $flattilecolors = false;
         }
-        // TODO:  display error message if error -> build regex(es), filter words from DB and display
+        $guessArr = [$guess0, $guess1, $guess2, $guess3, $guess4, $guess5];
+        $combinedGuesses = "";
+        for ($i = 0; $i <= 5; $i++) {
+            if ($guessArr[$i]) {
+                $combinedGuesses .= $guessArr[$i];
+            }
+            else {
+                break;
+            }
+        }
+        $deadLetters = "-";
+        $correctregexp = ".....";
+        $yellowLetters = "";
+        $yellowPattern = [[], [], [], [], [], []];
+        for ($n = 0; $n < strlen($combinedGuesses); $n++) {
+            if ($flattilecolors[$n] == "0" && !str_contains($deadLetters, $combinedGuesses[$n])) {
+                $gno = intdiv($n, 5);
+                $gtemp = $guessArr[$gno];
+                // add dead letters if they occur only once
+                if (substr_count($gtemp, $combinedGuesses[$n]) == 1) {
+                    $deadLetters .= $combinedGuesses[$n];
+                }
+            }
+            // account for green letters
+            else if ($flattilecolors[$n] == 2) {
+                $correctregexp[$n % 5] = $combinedGuesses[$n];
+            }
+            // account for yellow letters
+            else if ($flattilecolors[$n] == 1) {
+                $yellowLetters .= $combinedGuesses[$n];
+                array_push($yellowPattern[$n % 5], $combinedGuesses[$n]);
+            }
+        }
+        $deadregexp = "[" . $deadLetters . "]";
+        $data = $this->db->query("select word from words where word not regexp ? and word regexp ? order by word", "ss", $deadregexp, $correctregexp);
+        $possibleWords = [];
+        for ($i = 0; $i < count($data); $i++) {
+            $temp = $data[$i]['word'];
+            $shouldAdd = true;
+            // don't add if the word doesn't contain a yellow letter
+            for ($y = 0; $y < strlen($yellowLetters); $y++) {
+                if (!str_contains($temp, $yellowLetters[$y])) {
+                    $shouldAdd = false;
+                    break;
+                }
+            }
+            // don't add if the word contains a letter that was yellow in that place
+            for ($k = 0; $k <= 5; $k++) {
+                for ($j = 0; $j < count($yellowPattern[$k]); $j++) {
+                    if ($temp[$k] == $yellowPattern[$k][$j]) {
+                        $shouldAdd = false;
+                        break;
+                    }
+                }
+            }
+            // loop over each guess
+            for ($z = 0; $z < count($guessArr) && $z < $numGuesses; $z++) {
+                $tg = $guessArr[$z];
+                // loop over each letter of that guess
+                for ($h = 0; $h < 5; $h++) {
+                    // if a letter is used in that guess multiple times
+                    if (substr_count($tg, substr($tg, $h, 1)) > 1) {
+                        // loop over the tile colors for that guess
+                        $confcount = 0;
+                        for ($d = 0; $d < 5; $d++) {
+                            if ($flattilecolors[$z * 5 + $d] > 0) {
+                                $confcount++;
+                            }
+                        }
+                        // don't add words where the count of letters doesn't match
+                        if (substr_count($temp, $tg[$h]) != $confcount) {
+                            $shouldAdd = false;
+                            break;
+                        }
+                    }
+                }
+            }
+            if ($shouldAdd) {
+                array_push($possibleWords, $temp);
+            }
+        }
+        // need to account for multiple letters in cases:
+        // one yellow and another yellow or green
+        // one yellow/green and one black
         include("wordle.php");
     }
 
