@@ -275,7 +275,7 @@ class SiteController
                         // loop over the tile colors for that guess
                         $confcount = 0;
                         for ($d = 0; $d < 5; $d++) {
-                            if ($flattilecolors[$z * 5 + $d] > 0) {
+                            if ($flattilecolors[$z * 5 + $d] > 0 && $combinedGuesses[$z * 5 + $d] == $tg[$h]) {
                                 $confcount++;
                             }
                         }
